@@ -1,4 +1,4 @@
-package com.noul.aidocumentreader;
+package com.noul.aidocumentreader.rag;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.ai.reader.ExtractedTextFormatter;
@@ -12,9 +12,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PdfFileReader {
+
     private final VectorStore vectorStore;
 
-    @Value("classpath:filename.pdf")
+    @Value("classpath:TIOBE.pdf")
     private Resource pdfResource;
 
     public PdfFileReader(VectorStore vectorStore) {
