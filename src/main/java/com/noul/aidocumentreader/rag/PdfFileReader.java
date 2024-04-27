@@ -15,7 +15,7 @@ public class PdfFileReader {
 
     private final VectorStore vectorStore;
 
-    @Value("classpath:TIOBE.pdf")
+    @Value("classpath:/docs/TIOBE.pdf")
     private Resource pdfResource;
 
     public PdfFileReader(VectorStore vectorStore) {

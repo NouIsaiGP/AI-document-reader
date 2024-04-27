@@ -15,6 +15,7 @@ import org.springframework.core.io.Resource;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -51,6 +52,14 @@ public class RagConfiguration {
 
     private File getVectorStoreFile() {
         Path path = Paths.get("src", "main", "resources", "data");
+        if (!Files.exists(path)) {
+            try {
+                Files.createDirectories(path);
+            } catch (IOException e) {
+                log.error("Failed to create directory", e);
+                throw new RuntimeException(e);
+            }
+        }
         String absolutePath = path.toFile().getAbsolutePath() + "/" + vectorStoreName;
         return new File(absolutePath);
     }
